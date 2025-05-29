@@ -1,72 +1,86 @@
 
-import { Clock, Moon, Rocket } from 'lucide-react';
+import { MessageCircle, Clock, Users, Zap } from 'lucide-react';
 
 const BenefitsSection = () => {
   const commonQuestions = [
     "Qual o endereço da loja?",
-    "Quais horários estão disponíveis?",
+    "Meu pedido já foi enviado?",
     "Parcela no cartão?",
-    "Tem estacionamento?"
+    "Qual o preço?"
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-white mb-4">
             Tempo recuperado, foco no que importa
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-300 mb-8">
             Libere sua equipe de tarefas repetitivas
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-16">
-          <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">
+        <div className="max-w-5xl mx-auto mb-16">
+          <h3 className="text-2xl font-semibold text-center text-gray-200 mb-8">
             Perguntas que seus clientes fazem todo dia:
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {commonQuestions.map((question, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-700 italic">"{question}"</span>
+              <div key={index} className="bg-gradient-to-r from-gray-700/50 to-gray-600/30 rounded-xl p-6 shadow-lg border border-gray-600/50 backdrop-blur-sm">
+                <div className="flex items-center space-x-4">
+                  <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                  <span className="text-gray-200 italic text-lg">"{question}"</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center bg-white rounded-xl p-8 shadow-lg">
-            <Clock className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              ⏱️ Economia de tempo real
-            </h3>
-            <p className="text-gray-600">
-              Respostas instantâneas para dúvidas comuns, liberando sua equipe para focar no que realmente importa
-            </p>
-          </div>
+        {/* Flowing benefit cards */}
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            {/* Connection lines */}
+            <div className="hidden lg:block absolute top-24 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400"></div>
+            <div className="hidden lg:block absolute top-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full -translate-x-1.5"></div>
+            <div className="hidden lg:block absolute top-24 right-1/4 w-3 h-3 bg-green-400 rounded-full translate-x-1.5"></div>
+            <div className="hidden lg:block absolute top-24 left-1/2 w-3 h-3 bg-purple-400 rounded-full -translate-x-1.5"></div>
 
-          <div className="text-center bg-white rounded-xl p-8 shadow-lg">
-            <Moon className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              🌙 Disponível 24 × 7
-            </h3>
-            <p className="text-gray-600">
-              Seus clientes são atendidos a qualquer hora, mesmo quando você está dormindo
-            </p>
-          </div>
+            <div className="grid lg:grid-cols-3 gap-8">
+              <div className="text-center bg-gradient-to-br from-blue-900/40 to-blue-800/20 rounded-2xl p-8 shadow-xl border border-blue-700/30 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <MessageCircle className="h-16 w-16 text-blue-400 mx-auto mb-6" />
+                <h3 className="text-xl font-semibold text-white mb-4">
+                  Conversa Natural
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  O agente conversa com seus clientes de forma natural, confirma dados, 
+                  responde dúvidas frequentes e registra informações. Seja 1, ou 1.000 clientes.
+                </p>
+              </div>
 
-          <div className="text-center bg-white rounded-xl p-8 shadow-lg">
-            <Rocket className="h-12 w-12 text-green-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              🚀 Produtividade turbinada
-            </h3>
-            <p className="text-gray-600">
-              Sua equipe pode focar em vendas e relacionamento enquanto a IA cuida do básico
-            </p>
+              <div className="text-center bg-gradient-to-br from-purple-900/40 to-purple-800/20 rounded-2xl p-8 shadow-xl border border-purple-700/30 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <Clock className="h-16 w-16 text-purple-400 mx-auto mb-6" />
+                <h3 className="text-xl font-semibold text-white mb-4">
+                  Sempre Disponível
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Seus clientes são atendidos a qualquer hora, qualquer dia. 
+                  Nunca mais perca uma oportunidade por estar indisponível.
+                </p>
+              </div>
+
+              <div className="text-center bg-gradient-to-br from-green-900/40 to-green-800/20 rounded-2xl p-8 shadow-xl border border-green-700/30 backdrop-blur-sm transform hover:scale-105 transition-all duration-300">
+                <Zap className="h-16 w-16 text-green-400 mx-auto mb-6" />
+                <h3 className="text-xl font-semibold text-white mb-4">
+                  Foco Estratégico
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Sua equipe pode focar em vendas e relacionamento estratégico 
+                  enquanto a IA cuida do atendimento básico com excelência.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

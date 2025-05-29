@@ -7,13 +7,12 @@ import SocialProofSection from '../components/SocialProofSection';
 import HowItWorksSection from '../components/HowItWorksSection';
 import PricingSection from '../components/PricingSection';
 import FAQSection from '../components/FAQSection';
-import CTASection from '../components/CTASection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       <HeroSection />
       <ProductSection />
@@ -22,7 +21,6 @@ const Index = () => {
       <HowItWorksSection />
       <PricingSection />
       <FAQSection />
-      <CTASection />
       <ContactSection />
       <Footer />
     </div>
