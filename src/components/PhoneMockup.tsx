@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 const PhoneMockup = () => {
   const [messageIndex, setMessageIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const conversation = [
     { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
@@ -29,9 +31,20 @@ const PhoneMockup = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messageIndex]);
+
   const handlePlay = () => {
     if (audioRef.current) {
-      audioRef.current.play();
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
   };
 
@@ -52,7 +65,7 @@ const PhoneMockup = () => {
         <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
 
         {/* Tela do celular */}
-        <div className="w-full h-full bg-[url('/whatsapp-bg.webp')] bg-cover flex flex-col pt-10">
+        <div className="w-full h-full flex flex-col pt-10">
           {/* Cabeçalho do chat */}
           <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
             <img src="/avatar-marcela.png" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
@@ -62,8 +75,8 @@ const PhoneMockup = () => {
             </div>
           </div>
 
-          {/* Área de mensagens */}
-          <div className="flex-1 px-3 py-3 overflow-hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          {/* Área de mensagens com fundo do WhatsApp */}
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto flex flex-col space-y-3 text-sm bg-[url('/whatsapp-bg.webp')] bg-cover">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
@@ -79,20 +92,31 @@ const PhoneMockup = () => {
                       className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
                       onClick={handlePlay}
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-4 h-4 text-green-600"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                      {isPlaying ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-4 h-4 text-green-600"
+                        >
+                          <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-4 h-4 text-green-600"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
                     </button>
                     <div className="flex-1 h-1 bg-gray-300 rounded">
                       <div className="w-1/3 h-full bg-green-600 rounded" />
                     </div>
                     <div className="text-xs text-gray-600">0:08</div>
-                    <audio ref={audioRef} src="/audio/audio-marcela.mp3" preload="auto" />
+                    <audio ref={audioRef} src="/audio/audio-marcela.mp3" preload="auto" onEnded={() => setIsPlaying(false)} />
                   </div>
                 ) : (
                   <div>{msg.text}</div>
