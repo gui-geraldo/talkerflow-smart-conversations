@@ -8,15 +8,16 @@ const PhoneMockup = () => {
 
   const conversation = [
     { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
-    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Clínica Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
+    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
     { sender: 'client', text: 'Sim, primeira vez. Tem pra sexta?', time: '14:01' },
-    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? A, e aproveitando, qual seu nome? :)', time: '14:02' },
+    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? Hum, aproveitando, qual seu nome? :)', time: '14:02' },
     { sender: 'client', text: '', time: '14:02', audio: true },
     { sender: 'agent', text: 'Sim, sexta é uma correria mesmo Marcela! Vamos de manhã, tenho na terça às 9h ou 11:15h. Qual destes fica melhor?', time: '14:03' },
-    { sender: 'client', text: '15:15 fica bom', time: '14:03' },
+    { sender: 'client', text: '11:15 fica bom', time: '14:03' },
     { sender: 'agent', text: 'Fechado! Me manda seu nome completo por favor, e o seu email tb', time: '14:04' },
     { sender: 'client', text: 'Marcela da Silva\nmarceladasilva@mail.com', time: '14:04' },
-    { sender: 'agent', text: 'Fechado Marcela, já coloquei na agenda do Dr.!\nSegue aqui um resumo\n*Consulta Marcada*\nData: 05/Ago - Terça\nHorário: 11:15\nNome: Marcela da Silva\nEmail: marceladasilva@mail.com\n\nNosso Endereço:\n\nAv. Paulista 534 - Sala 65\nBela Vista, São Paulo - SP\nTemos conveniado no local, R$ 15\nOu vindo de transporte público, menos de 5 min andando da estação Trianon MASP', time: '14:05' },
+    { sender: 'agent', text: 'Fechado Marcela, já coloquei na agenda do Dr.!\nSegue aqui um resumo:', time: '14:05' },
+    { sender: 'agent', text: '**Consulta Marcada**\n**Data:** 05/Ago - Terça\n**Horário:** 11:15\n**Nome:** Marcela da Silva\n**Email:** marceladasilva@mail.com\n\n**Nosso Endereço:**\n\nAv. Paulista 534 - Sala 65\nBela Vista, São Paulo - SP\nTemos conveniado no local, R$ 15\nOu vindo de transporte público, menos de 5 min andando da estação Trianon MASP', time: '14:05' },
     { sender: 'client', text: 'Blz! Obrigada', time: '14:06' },
     { sender: 'agent', text: 'Magina, foi um prazer\nAté logo :)', time: '14:06' }
   ];
@@ -52,31 +53,31 @@ const PhoneMockup = () => {
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
         {/* Barra de status */}
-        <div className="absolute top-0 w-full h-5 bg-black text-white text-[10px] px-2 flex items-center justify-between z-20">
+        <div className="absolute top-0 w-full h-6 bg-black text-white text-[12px] px-2 flex items-center justify-between z-20">
           <span>14:00</span>
           <div className="flex gap-1 items-center">
-            <span className="w-3 h-[2px] bg-white" />
-            <span className="w-3 h-[2px] bg-white" />
-            <span className="w-4 h-2 border border-white rounded-sm" />
+            <span className="w-4 h-[2px] bg-white" />
+            <span className="w-4 h-[2px] bg-white" />
+            <span className="w-5 h-3 border border-white rounded-sm" />
           </div>
         </div>
 
         {/* Notch */}
-        <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
+        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
 
         {/* Tela do celular */}
-        <div className="w-full h-full flex flex-col pt-10">
+        <div className="w-full h-full flex flex-col pt-12">
           {/* Cabeçalho do chat */}
           <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
-            <img src="/avatar-marcela.png" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
+            <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
             <div className="min-w-0">
               <div className="font-semibold truncate">Marcela Paciente</div>
               <div className="text-sm text-green-100">Online</div>
             </div>
           </div>
 
-          {/* Área de mensagens com fundo do WhatsApp */}
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto flex flex-col space-y-3 text-sm bg-[url('/whatsapp-bg.webp')] bg-cover">
+          {/* Área de mensagens */}
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
@@ -119,7 +120,7 @@ const PhoneMockup = () => {
                     <audio ref={audioRef} src="/audio/audio-marcela.mp3" preload="auto" onEnded={() => setIsPlaying(false)} />
                   </div>
                 ) : (
-                  <div>{msg.text}</div>
+                  <div dangerouslySetInnerHTML={{ __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                 )}
                 <div className={`text-[10px] text-gray-500 mt-1 text-right`}>
                   {msg.time}
