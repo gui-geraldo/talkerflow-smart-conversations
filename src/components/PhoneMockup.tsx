@@ -7,8 +7,8 @@ const PhoneMockup = () => {
     { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
     { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Clínica Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
     { sender: 'client', text: 'Sim, primeira vez. Tem pra sexta?', time: '14:01' },
-    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? Alias, qual seu nome? :)', time: '14:02' },
-    { sender: 'client', text: '[Áudio de 8 segundos]', time: '14:02', audio: true },
+    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? A, e aproveitando, qual seu nome? :)', time: '14:02' },
+    { sender: 'client', text: '', time: '14:02', audio: true },
     { sender: 'agent', text: 'Sim, sexta é uma correria mesmo Marcela! Vamos de manhã, tenho na terça às 9h ou 11:15h. Qual destes fica melhor?', time: '14:03' },
     { sender: 'client', text: '15:15 fica bom', time: '14:03' },
     { sender: 'agent', text: 'Fechado! Me manda seu nome completo por favor, e o seu email tb', time: '14:04' },
@@ -37,10 +37,10 @@ const PhoneMockup = () => {
         {/* Tela do celular */}
         <div className="w-full h-full bg-[url('/whatsapp-bg.webp')] bg-cover flex flex-col">
           {/* Cabeçalho do chat */}
-          <div className="bg-green-600 text-white px-4 py-3 flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gray-300 rounded-full" />
-            <div>
-              <div className="font-semibold">Fernanda Paciente</div>
+          <div className="bg-green-600 text-white px-4 py-3 flex items-center space-x-3 overflow-hidden">
+            <div className="w-10 h-10 bg-gray-300 rounded-full shrink-0" />
+            <div className="min-w-0">
+              <div className="font-semibold truncate">Marcela Paciente</div>
               <div className="text-sm text-green-100">Online</div>
             </div>
           </div>
@@ -57,10 +57,28 @@ const PhoneMockup = () => {
                 } animate-fade-in`}
               >
                 {msg.audio ? (
-                  <audio controls className="w-full">
-                    <source src="/audio/audio-marcela.mp3" type="audio/mpeg" />
-                    Seu navegador não suporta o elemento de áudio.
-                  </audio>
+                  <div className="flex items-center space-x-2">
+                    <button className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="white"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5.25 5.25l13.5 6.75-13.5 6.75V5.25z"
+                        />
+                      </svg>
+                    </button>
+                    <div className="flex-1 h-1 bg-gray-300 rounded">
+                      <div className="w-1/4 h-full bg-blue-500 rounded" />
+                    </div>
+                    <div className="text-xs text-gray-600">0:08</div>
+                  </div>
                 ) : (
                   <div>{msg.text}</div>
                 )}
