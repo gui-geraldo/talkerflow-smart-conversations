@@ -231,7 +231,7 @@ const HeroSection = () => {
                     </div>
                     <div className="flex justify-start">
                       <div className="bg-white text-gray-800 p-2 rounded-lg text-xs max-w-xs shadow">
-                        <div>Olá {nome do cliente não identificado}!<br/>É um prazer te receber<br/>Você já é nosso aluno?<br/>[1] - SIM<br/>[2] - NÃO</div>
+                        <div>Olá {`{nome do cliente não identificado}`}!<br/>É um prazer te receber<br/>Você já é nosso aluno?<br/>[1] - SIM<br/>[2] - NÃO</div>
                         <div className="text-gray-500 text-xs">2:44 PM</div>
                       </div>
                     </div>
