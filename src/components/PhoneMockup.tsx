@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const PhoneMockup = () => {
   const [messageIndex, setMessageIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const conversation = [
     { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
@@ -28,14 +29,30 @@ const PhoneMockup = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handlePlay = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+
   return (
     <div className="flex justify-center animate-fade-in">
-      <div className="w-[320px] h-[640px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
+      <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
+        {/* Barra de status */}
+        <div className="absolute top-0 w-full h-5 bg-black text-white text-[10px] px-2 flex items-center justify-between z-20">
+          <span>14:00</span>
+          <div className="flex gap-1 items-center">
+            <span className="w-3 h-[2px] bg-white" />
+            <span className="w-3 h-[2px] bg-white" />
+            <span className="w-4 h-2 border border-white rounded-sm" />
+          </div>
+        </div>
+
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
+        <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
 
         {/* Tela do celular */}
-        <div className="w-full h-full bg-[url('/whatsapp-bg.webp')] bg-cover flex flex-col">
+        <div className="w-full h-full bg-[url('/whatsapp-bg.webp')] bg-cover flex flex-col pt-10">
           {/* Cabeçalho do chat */}
           <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
             <img src="/avatar-marcela.png" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
@@ -58,20 +75,24 @@ const PhoneMockup = () => {
               >
                 {msg.audio ? (
                   <div className="flex items-center space-x-2">
-                    <button className="w-8 h-8 bg-white border border-gray-300 rounded-full flex items-center justify-center">
+                    <button
+                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
+                      onClick={handlePlay}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
                         fill="currentColor"
-                        viewBox="0 0 20 20"
-                        className="w-4 h-4 text-blue-500"
+                        className="w-4 h-4 text-green-600"
                       >
-                        <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
+                        <path d="M8 5v14l11-7z" />
                       </svg>
                     </button>
                     <div className="flex-1 h-1 bg-gray-300 rounded">
-                      <div className="w-1/4 h-full bg-blue-500 rounded" />
+                      <div className="w-1/3 h-full bg-green-600 rounded" />
                     </div>
                     <div className="text-xs text-gray-600">0:08</div>
+                    <audio ref={audioRef} src="/audio/audio-marcela.mp3" preload="auto" />
                   </div>
                 ) : (
                   <div>{msg.text}</div>
@@ -88,9 +109,9 @@ const PhoneMockup = () => {
             <div className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-gray-500 text-sm">
               Digite uma mensagem
             </div>
-            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M4.5 3.5l11 6.5-11 6.5v-13z" />
+            <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
               </svg>
             </div>
           </div>
