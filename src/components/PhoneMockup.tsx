@@ -56,20 +56,20 @@ const PhoneMockup = () => {
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-20" />
 
-        {/* Barra de status personalizada com fundo do WhatsApp */}
-        <div className="absolute top-5 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[11px] bg-green-600">
+        {/* Barra de status com fundo branco separada */}
+        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-10 text-black text-[11px] bg-white">
           <span className="font-semibold">9:41</span>
           <div className="flex gap-1 items-center">
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
-            <svg className="w-5 h-5" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
+            <svg className="w-4 h-4" fill="black" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
+            <svg className="w-4 h-4" fill="black" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
+            <svg className="w-5 h-5" fill="none" stroke="black" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
           </div>
         </div>
 
         {/* Tela do celular */}
-        <div className="w-full h-full flex flex-col pt-11">
+        <div className="w-full h-full flex flex-col pt-10">
           {/* Cabeçalho do chat */}
           <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
             <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
