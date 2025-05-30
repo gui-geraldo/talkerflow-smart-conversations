@@ -55,13 +55,13 @@ const PhoneMockup = () => {
   return (
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
-        {/* Barra de status tradicional */}
-        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[11px]">
-          <span className="font-semibold">9:41</span>
+        {/* Barra de status com ícones mais nítidos */}
+        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[12px] font-medium">
+          <span>9:41</span>
           <div className="flex gap-1 items-center">
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
-            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
-            <svg className="w-5 h-5" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
+            <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
+            <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
+            <svg className="w-6 h-6" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
           </div>
         </div>
 
