@@ -30,15 +30,15 @@ const PhoneMockup = () => {
 
   return (
     <div className="flex justify-center animate-fade-in">
-      <div className="w-[360px] h-[740px] bg-black rounded-[40px] shadow-2xl border-[10px] border-black relative overflow-hidden">
+      <div className="w-[320px] h-[640px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 h-6 bg-black rounded-b-xl z-10" />
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
 
         {/* Tela do celular */}
         <div className="w-full h-full bg-[url('/whatsapp-bg.webp')] bg-cover flex flex-col">
           {/* Cabeçalho do chat */}
-          <div className="bg-green-600 text-white px-4 py-3 flex items-center space-x-3 overflow-hidden">
-            <div className="w-10 h-10 bg-gray-300 rounded-full shrink-0" />
+          <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
+            <img src="/avatar-marcela.png" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
             <div className="min-w-0">
               <div className="font-semibold truncate">Marcela Paciente</div>
               <div className="text-sm text-green-100">Online</div>
@@ -46,7 +46,7 @@ const PhoneMockup = () => {
           </div>
 
           {/* Área de mensagens */}
-          <div className="flex-1 px-3 py-4 overflow-hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div className="flex-1 px-3 py-3 overflow-hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
@@ -58,20 +58,14 @@ const PhoneMockup = () => {
               >
                 {msg.audio ? (
                   <div className="flex items-center space-x-2">
-                    <button className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                    <button className="w-8 h-8 bg-white border border-gray-300 rounded-full flex items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="white"
-                        className="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        className="w-4 h-4 text-blue-500"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5.25 5.25l13.5 6.75-13.5 6.75V5.25z"
-                        />
+                        <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
                       </svg>
                     </button>
                     <div className="flex-1 h-1 bg-gray-300 rounded">
@@ -90,13 +84,13 @@ const PhoneMockup = () => {
           </div>
 
           {/* Barra de input fake */}
-          <div className="bg-white px-4 py-3 flex items-center space-x-2 border-t">
+          <div className="bg-white px-4 py-2 flex items-center space-x-2 border-t">
             <div className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-gray-500 text-sm">
               Digite uma mensagem
             </div>
             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
               <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                <path d="M4.5 3.5l11 6.5-11 6.5v-13z" />
               </svg>
             </div>
           </div>
