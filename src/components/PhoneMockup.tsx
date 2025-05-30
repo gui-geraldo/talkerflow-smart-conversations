@@ -8,15 +8,15 @@ const PhoneMockup = () => {
 
   const conversation = [
     { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
-    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
+    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Clínica Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
     { sender: 'client', text: 'Sim, primeira vez. Tem pra sexta?', time: '14:01' },
-    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? Hum, aproveitando, qual seu nome? :)', time: '14:02' },
+    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? A, e aproveitando, qual seu nome? :)', time: '14:02' },
     { sender: 'client', text: '', time: '14:02', audio: true },
     { sender: 'agent', text: 'Sim, sexta é uma correria mesmo Marcela! Vamos de manhã, tenho na terça às 9h ou 11:15h. Qual destes fica melhor?', time: '14:03' },
-    { sender: 'client', text: '11:15 fica bom', time: '14:03' },
+    { sender: 'client', text: '15:15 fica bom', time: '14:03' },
     { sender: 'agent', text: 'Fechado! Me manda seu nome completo por favor, e o seu email tb', time: '14:04' },
     { sender: 'client', text: 'Marcela da Silva\nmarceladasilva@mail.com', time: '14:04' },
-    { sender: 'agent', text: 'Fechado Marcela, já coloquei na agenda do Dr.!\nSegue aqui um resumo:', time: '14:05' },
+    { sender: 'agent', text: 'Fechado Marcela, já coloquei na agenda do Dr.!', time: '14:05' },
     { sender: 'agent', text: '**Consulta Marcada**\n**Data:** 05/Ago - Terça\n**Horário:** 11:15\n**Nome:** Marcela da Silva\n**Email:** marceladasilva@mail.com\n\n**Nosso Endereço:**\n\nAv. Paulista 534 - Sala 65\nBela Vista, São Paulo - SP\nTemos conveniado no local, R$ 15\nOu vindo de transporte público, menos de 5 min andando da estação Trianon MASP', time: '14:05' },
     { sender: 'client', text: 'Blz! Obrigada', time: '14:06' },
     { sender: 'agent', text: 'Magina, foi um prazer\nAté logo :)', time: '14:06' }
@@ -34,7 +34,10 @@ const PhoneMockup = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
     }
   }, [messageIndex]);
 
@@ -52,13 +55,13 @@ const PhoneMockup = () => {
   return (
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
-        {/* Barra de status */}
-        <div className="absolute top-0 w-full h-6 bg-black text-white text-[12px] px-2 flex items-center justify-between z-20">
-          <span>14:00</span>
+        {/* Barra de status inspirada no iPhone */}
+        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[11px]">
+          <span className="font-semibold">9:41</span>
           <div className="flex gap-1 items-center">
-            <span className="w-4 h-[2px] bg-white" />
-            <span className="w-4 h-[2px] bg-white" />
-            <span className="w-5 h-3 border border-white rounded-sm" />
+            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
+            <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
+            <svg className="w-5 h-5" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
           </div>
         </div>
 
@@ -77,7 +80,7 @@ const PhoneMockup = () => {
           </div>
 
           {/* Área de mensagens */}
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
