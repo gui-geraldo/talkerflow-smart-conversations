@@ -56,7 +56,7 @@ const PhoneMockup = () => {
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[580px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
         {/* Barra superior visual estilo iPhone preenchida com verde */}
-        <div className="absolute top-0 w-full h-10 bg-green-600 text-white text-[11px] px-3 flex items-center justify-between z-30">
+        <div className="absolute top-0 w-full h-10 bg-white text-black text-[11px] px-3 flex items-center justify-between z-30">
           <span className="font-semibold">9:41</span>
           <div className="flex gap-1 items-center">
             <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
@@ -66,7 +66,7 @@ const PhoneMockup = () => {
         </div>
 
         {/* Notch */}
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-40" />
+        <div className=\"absolute top-10 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-40\" />
 
         {/* Tela do celular */}
         <div className="w-full h-full flex flex-col pt-14">
@@ -80,7 +80,7 @@ const PhoneMockup = () => {
           </div>
 
           {/* Área de mensagens */}
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-none relative after:absolute after:top-0 after:right-0 after:w-1 after:bg-black/20 after:rounded-full after:h-12 after:opacity-50 flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
