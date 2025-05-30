@@ -55,13 +55,23 @@ const PhoneMockup = () => {
   return (
     <div className="flex justify-center animate-fade-in">
       <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
-        {/* Barra de status com ícones mais nítidos */}
-        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[12px] font-medium">
+        {/* Barra de status com SVG embutido */}
+        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-xs font-semibold">
           <span>9:41</span>
-          <div className="flex gap-1 items-center">
-            <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
-            <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20 4h-1v1h1V4zm0 2h-1v1h1V6zm0 2h-1v1h1V8zm0 2h-1v1h1v-1z" /></svg>
-            <svg className="w-6 h-6" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" ry="2" /></svg>
+          <div className="flex items-center gap-1">
+            {/* Sinal */}
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 20h2v-4H2v4zm4 0h2v-7H6v7zm4 0h2v-10h-2v10zm4 0h2v-13h-2v13zm4 0h2V4h-2v16z" />
+            </svg>
+            {/* WiFi */}
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 18c-1.1 0-2 .9-2 2h4c0-1.1-.9-2-2-2zm-3.9-2.9c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41C8.84 18.87 10.35 19.5 12 19.5s3.16-.63 4.41-1.98c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0C13.95 17.15 13.01 17.5 12 17.5s-1.95-.35-2.9-1.4zM12 14c-1.66 0-3.14.67-4.24 1.76-.39.39-1.02.39-1.41 0s-.39-1.02 0-1.41C7.99 12.85 9.91 12 12 12s4.01.85 5.66 2.35c.39.39.39 1.02 0 1.41s-1.02.39-1.41 0C15.14 14.67 13.66 14 12 14z" />
+            </svg>
+            {/* Bateria */}
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="1" y="6" width="18" height="12" rx="2" ry="2" />
+              <path d="M23 13v-2" />
+            </svg>
           </div>
         </div>
 
