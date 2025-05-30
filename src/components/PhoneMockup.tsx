@@ -63,14 +63,17 @@ const PhoneMockup = () => {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2 20h2v-4H2v4zm4 0h2v-7H6v7zm4 0h2v-10h-2v10zm4 0h2v-13h-2v13zm4 0h2V4h-2v16z" />
             </svg>
-            {/* WiFi */}
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 18c-1.1 0-2 .9-2 2h4c0-1.1-.9-2-2-2zm-3.9-2.9c-.39-.39-1.02-.39-1.41 0s-.39 1.02 0 1.41C8.84 18.87 10.35 19.5 12 19.5s3.16-.63 4.41-1.98c.39-.39.39-1.02 0-1.41s-1.02-.39-1.41 0C13.95 17.15 13.01 17.5 12 17.5s-1.95-.35-2.9-1.4zM12 14c-1.66 0-3.14.67-4.24 1.76-.39.39-1.02.39-1.41 0s-.39-1.02 0-1.41C7.99 12.85 9.91 12 12 12s4.01.85 5.66 2.35c.39.39.39 1.02 0 1.41s-1.02.39-1.41 0C15.14 14.67 13.66 14 12 14z" />
+            {/* WiFi - mais visível */}
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+              <line x1="12" y1="20" x2="12.01" y2="20" />
             </svg>
-            {/* Bateria */}
+            {/* Bateria cheia */}
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="1" y="6" width="18" height="12" rx="2" ry="2" />
               <path d="M23 13v-2" />
+              <rect x="3" y="8" width="14" height="8" fill="white" />
             </svg>
           </div>
         </div>
