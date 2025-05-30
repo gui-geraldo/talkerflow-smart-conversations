@@ -4,10 +4,18 @@ const PhoneMockup = () => {
   const [messageIndex, setMessageIndex] = useState(0);
 
   const conversation = [
-    { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '10:30' },
-    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Marcela, aqui da Clínica Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '10:31' },
-    { sender: 'client', text: 'Sim, primeira vez. Tem pra sexta?', time: '10:32' },
-    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere?', time: '10:32' }
+    { sender: 'client', text: 'Oi! Quero agendar uma consulta', time: '14:00' },
+    { sender: 'agent', text: 'Olá! Tudo bem? Eu sou a Isabela, aqui da Clínica Integral Care.\nMe conte, é sua primeira consulta com a gente?', time: '14:01' },
+    { sender: 'client', text: 'Sim, primeira vez. Tem pra sexta?', time: '14:01' },
+    { sender: 'agent', text: 'Legal! Tenho horário com o Dr. Paulo na sexta às 16h ou 17:15. Qual horário prefere? Alias, qual seu nome? :)', time: '14:02' },
+    { sender: 'client', text: '[Áudio de 8 segundos]', time: '14:02', audio: true },
+    { sender: 'agent', text: 'Sim, sexta é uma correria mesmo Marcela! Vamos de manhã, tenho na terça às 9h ou 11:15h. Qual destes fica melhor?', time: '14:03' },
+    { sender: 'client', text: '15:15 fica bom', time: '14:03' },
+    { sender: 'agent', text: 'Fechado! Me manda seu nome completo por favor, e o seu email tb', time: '14:04' },
+    { sender: 'client', text: 'Marcela da Silva\nmarceladasilva@mail.com', time: '14:04' },
+    { sender: 'agent', text: 'Fechado Marcela, já coloquei na agenda do Dr.!\nSegue aqui um resumo\n*Consulta Marcada*\nData: 05/Ago - Terça\nHorário: 11:15\nNome: Marcela da Silva\nEmail: marceladasilva@mail.com\n\nNosso Endereço:\n\nAv. Paulista 534 - Sala 65\nBela Vista, São Paulo - SP\nTemos conveniado no local, R$ 15\nOu vindo de transporte público, menos de 5 min andando da estação Trianon MASP', time: '14:05' },
+    { sender: 'client', text: 'Blz! Obrigada', time: '14:06' },
+    { sender: 'agent', text: 'Magina, foi um prazer\nAté logo :)', time: '14:06' }
   ];
 
   useEffect(() => {
@@ -48,7 +56,14 @@ const PhoneMockup = () => {
                     : 'mr-auto bg-white text-black rounded-bl-sm'
                 } animate-fade-in`}
               >
-                <div>{msg.text}</div>
+                {msg.audio ? (
+                  <audio controls className="w-full">
+                    <source src="/audio/audio-marcela.mp3" type="audio/mpeg" />
+                    Seu navegador não suporta o elemento de áudio.
+                  </audio>
+                ) : (
+                  <div>{msg.text}</div>
+                )}
                 <div className={`text-[10px] text-gray-500 mt-1 text-right`}>
                   {msg.time}
                 </div>
