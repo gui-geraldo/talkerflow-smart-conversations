@@ -1,173 +1,81 @@
 
-import { useState } from 'react';
-import { MessageCircle, Mail, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageSquare } from 'lucide-react';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Aqui você integraria com seu backend
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
-    <section id="contato" className="py-20 bg-gray-50">
+    <section id="contato" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Vamos conversar?
-          </h2>
-          <p className="text-xl text-gray-600">
-            Entre em contato para uma demonstração personalizada
-          </p>
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl font-bold text-white mb-4">Vamos conversar?</h2>
+          <p className="text-xl text-gray-300">Entre em contato e transforme seu atendimento</p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
-          {/* Formulário */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Solicite uma demonstração
-            </h3>
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+          <div className="animate-slide-in-left">
+            <h3 className="text-2xl font-semibold text-white mb-6">Fale conosco</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nome completo
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4 p-4 bg-gradient-to-br from-gray-800/50 to-gray-700/30 rounded-xl border border-gray-600/50 backdrop-blur-sm hover-lift">
+                <MessageSquare className="h-6 w-6 text-green-400" />
+                <div>
+                  <div className="text-white font-semibold">WhatsApp</div>
+                  <div className="text-gray-300">Fale diretamente conosco</div>
+                </div>
               </div>
               
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  E-mail empresarial
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
+              <div className="flex items-center space-x-4 p-4 bg-gradient-to-br from-gray-800/50 to-gray-700/30 rounded-xl border border-gray-600/50 backdrop-blur-sm hover-lift">
+                <Mail className="h-6 w-6 text-blue-400" />
+                <div>
+                  <div className="text-white font-semibold">E-mail</div>
+                  <div className="text-gray-300">contato@talkerflow.me</div>
+                </div>
               </div>
               
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                  Empresa
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
+              <div className="flex items-center space-x-4 p-4 bg-gradient-to-br from-gray-800/50 to-gray-700/30 rounded-xl border border-gray-600/50 backdrop-blur-sm hover-lift">
+                <Phone className="h-6 w-6 text-purple-400" />
+                <div>
+                  <div className="text-white font-semibold">Telefone</div>
+                  <div className="text-gray-300">Disponível via WhatsApp</div>
+                </div>
               </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Como podemos ajudar?
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Conte sobre seu negócio e necessidades..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-              >
-                Solicitar demonstração
-              </button>
-            </form>
+            </div>
           </div>
 
-          {/* Informações de contato */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Outras formas de contato
-              </h3>
-              
+          <div className="animate-slide-in-right">
+            <form className="bg-gradient-to-br from-gray-800/50 to-gray-700/30 rounded-2xl p-8 border border-gray-600/50 backdrop-blur-sm">
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <MessageCircle className="h-6 w-6 text-blue-600 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">WhatsApp</h4>
-                    <p className="text-gray-600">Fale conosco diretamente</p>
-                    <a href="https://wa.me/5511999999999" className="text-blue-600 hover:underline">
-                      (11) 99999-9999
-                    </a>
-                  </div>
+                <div>
+                  <label className="block text-white font-semibold mb-2">Nome</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                    placeholder="Seu nome completo"
+                  />
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <Mail className="h-6 w-6 text-blue-600 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">E-mail</h4>
-                    <p className="text-gray-600">Para dúvidas comerciais</p>
-                    <a href="mailto:contato@talkerflow.me" className="text-blue-600 hover:underline">
-                      contato@talkerflow.me
-                    </a>
-                  </div>
+                <div>
+                  <label className="block text-white font-semibold mb-2">E-mail</label>
+                  <input 
+                    type="email" 
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                    placeholder="seu@email.com"
+                  />
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <MapPin className="h-6 w-6 text-blue-600 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Endereço</h4>
-                    <p className="text-gray-600">
-                      São Paulo, SP<br />
-                      Brasil
-                    </p>
-                  </div>
+                <div>
+                  <label className="block text-white font-semibold mb-2">Mensagem</label>
+                  <textarea 
+                    rows={4}
+                    className="w-full px-4 py-3 bg-gray-900/50 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                    placeholder="Como podemos ajudar você?"
+                  ></textarea>
                 </div>
+                
+                <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl hover-scale">
+                  Enviar mensagem
+                </button>
               </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">
-                Garantia de satisfação
-              </h3>
-              <p className="text-lg opacity-90 mb-4">
-                7 dias de teste gratuito para você conhecer o poder do TalkerFlow
-              </p>
-              <ul className="space-y-2 text-sm opacity-75">
-                <li>✓ Sem compromisso inicial</li>
-                <li>✓ Suporte completo durante o teste</li>
-                <li>✓ Resultados visíveis em 48h</li>
-              </ul>
-            </div>
+            </form>
           </div>
         </div>
       </div>

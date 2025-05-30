@@ -9,7 +9,7 @@ const ProductSection = () => {
   return (
     <section id="produtos" className="py-20 bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-white mb-4">
             Duas soluções, resultados imediatos
           </h2>
@@ -20,7 +20,7 @@ const ProductSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Talker Flow Lead */}
-          <div id="talker-flow-lead" className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 rounded-2xl p-8 border border-blue-700/50 backdrop-blur-sm">
+          <div id="talker-flow-lead" className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 rounded-2xl p-8 border border-blue-700/50 backdrop-blur-sm hover-lift animate-slide-in-left">
             <div className="flex items-center space-x-3 mb-6">
               <Target className="h-8 w-8 text-blue-400" />
               <h3 className="text-2xl font-bold text-white">Talker Flow Lead</h3>
@@ -29,6 +29,10 @@ const ProductSection = () => {
             <h4 className="text-xl font-semibold text-blue-300 mb-4">
               "A primeira impressão é a que fica"
             </h4>
+
+            <p className="text-lg text-blue-200 mb-2 font-medium">
+              Transforme cada interação em um momento UAU
+            </p>
             
             <p className="text-gray-300 mb-6">
               SDR automatizado que atende seus leads via WhatsApp, qualifica interessados, 
@@ -57,14 +61,14 @@ const ProductSection = () => {
             
             <button 
               onClick={() => setDialogType('lead')}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors hover-scale"
             >
               Ver fluxo de conversa
             </button>
           </div>
 
           {/* Talker Flow Loop */}
-          <div id="talker-flow-loop" className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 rounded-2xl p-8 border border-purple-700/50 backdrop-blur-sm">
+          <div id="talker-flow-loop" className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 rounded-2xl p-8 border border-purple-700/50 backdrop-blur-sm hover-lift animate-slide-in-right">
             <div className="flex items-center space-x-3 mb-6">
               <RefreshCcw className="h-8 w-8 text-purple-400" />
               <h3 className="text-2xl font-bold text-white">Talker Flow Loop</h3>
@@ -97,7 +101,7 @@ const ProductSection = () => {
             
             <button 
               onClick={() => setDialogType('loop')}
-              className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+              className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors hover-scale"
             >
               Ver fluxo de conversa
             </button>

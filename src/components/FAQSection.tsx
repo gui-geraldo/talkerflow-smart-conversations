@@ -1,6 +1,6 @@
 
+import { Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -8,7 +8,7 @@ const FAQSection = () => {
   const faqs = [
     {
       question: "Quanto tempo leva para implementar o agente na minha empresa?",
-      answer: "Entre 24 e 48h após a contratação. Nossa equipe configura tudo e oferece treinamento online."
+      answer: "Nossa equipe configura tudo e oferece treinamento online rapidamente. O processo é ágil e eficiente."
     },
     {
       question: "O agente lida bem com agendamentos complexos?",
@@ -25,39 +25,35 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gray-800">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Perguntas Frequentes
-          </h2>
-          <p className="text-xl text-gray-600">
-            Tire suas dúvidas sobre o TalkerFlow
-          </p>
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl font-bold text-white mb-4">Perguntas Frequentes</h2>
+          <p className="text-xl text-gray-300">Tire suas dúvidas sobre o TalkerFlow</p>
         </div>
 
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg mb-4 overflow-hidden">
+            <div key={index} className="mb-4 animate-slide-in-left" style={{animationDelay: `${index * 0.1}s`}}>
               <button
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full bg-gradient-to-br from-gray-700/50 to-gray-600/30 rounded-xl p-6 text-left border border-gray-600/50 backdrop-blur-sm hover-lift focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4">
-                  {faq.question}
-                </h3>
-                {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-gray-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-gray-600 flex-shrink-0" />
-                )}
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                  <div className="flex-shrink-0">
+                    {openIndex === index ? (
+                      <Minus className="h-5 w-5 text-blue-400" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-blue-400" />
+                    )}
+                  </div>
+                </div>
               </button>
               
               {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </p>
+                <div className="mt-2 p-6 bg-gray-900/50 rounded-xl border border-gray-700/50 backdrop-blur-sm animate-fade-in">
+                  <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
