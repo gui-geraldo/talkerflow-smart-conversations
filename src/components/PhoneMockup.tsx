@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-function PhoneMockup() {
+const PhoneMockup = () => {
   const [messageIndex, setMessageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,9 +54,12 @@ function PhoneMockup() {
 
   return (
     <div className="flex justify-center animate-fade-in">
-      <div className="w-[320px] h-[580px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
-        {/* Barra superior visual estilo iPhone preenchida com verde */}
-        <div className="absolute top-0 w-full h-10 bg-white text-black text-[11px] px-3 flex items-center justify-between z-30">
+      <div className="w-[320px] h-[600px] bg-black rounded-[36px] shadow-2xl border-[8px] border-black relative overflow-hidden">
+        {/* Notch */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-5 bg-black rounded-b-xl z-10" />
+
+        {/* Barra de status personalizada com fundo do WhatsApp */}
+        <div className="absolute top-5 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-[11px] bg-green-600">
           <span className="font-semibold">9:41</span>
           <div className="flex gap-1 items-center">
             <svg className="w-4 h-4" fill="white" viewBox="0 0 24 24"><path d="M4 10h1v4H4v-4zm2 2h1v2H6v-2zm2-4h1v6H8V8zm2 1h1v5h-1V9zm2 3h1v2h-1v-2zm2-2h1v4h-1v-4zm2-3h1v7h-1V7zm2 5h1v2h-1v-2z" /></svg>
@@ -65,38 +68,50 @@ function PhoneMockup() {
           </div>
         </div>
 
-        {/* Notch */}
-        <div className />\"absolute top-10 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-40\" />
-
         {/* Tela do celular */}
-        <div className="w-full h-full flex flex-col pt-14">
+        <div className="w-full h-full flex flex-col pt-11">
           {/* Cabeçalho do chat */}
-          <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3">
+          <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
             <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
             <div className="min-w-0">
-              <div className="font-semibold text-sm truncate">Marcela Paciente</div>
+              <div className="font-semibold truncate">Marcela Paciente</div>
               <div className="text-sm text-green-100">Online</div>
             </div>
           </div>
 
           {/* Área de mensagens */}
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-none relative after:absolute after:top-0 after:right-0 after:w-1 after:bg-black/20 after:rounded-full after:h-12 after:opacity-50 flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight ${msg.sender === 'client'
+                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight ${
+                  msg.sender === 'client'
                     ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
-                    : 'mr-auto bg-white text-black rounded-bl-sm'} animate-fade-in`}
+                    : 'mr-auto bg-white text-black rounded-bl-sm'
+                } animate-fade-in`}
               >
                 {msg.audio ? (
                   <div className="flex items-center space-x-2">
-                    <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center" onClick={handlePlay}>
+                    <button
+                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
+                      onClick={handlePlay}
+                    >
                       {isPlaying ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-green-600">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-4 h-4 text-green-600"
+                        >
                           <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
                         </svg>
                       ) : (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-green-600">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-4 h-4 text-green-600"
+                        >
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       )}
@@ -110,7 +125,9 @@ function PhoneMockup() {
                 ) : (
                   <div dangerouslySetInnerHTML={{ __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                 )}
-                <div className="text-[10px] text-gray-500 mt-1 text-right">{msg.time}</div>
+                <div className={`text-[10px] text-gray-500 mt-1 text-right`}>
+                  {msg.time}
+                </div>
               </div>
             ))}
           </div>
@@ -130,6 +147,6 @@ function PhoneMockup() {
       </div>
     </div>
   );
-}
+};
 
 export default PhoneMockup;
