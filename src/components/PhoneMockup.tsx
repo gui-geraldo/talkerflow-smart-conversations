@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-const PhoneMockup = () => {
+function PhoneMockup() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -66,7 +66,7 @@ const PhoneMockup = () => {
         </div>
 
         {/* Notch */}
-        <div className=\"absolute top-10 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-40\" />
+        <div className />\"absolute top-10 left-1/2 transform -translate-x-1/2 w-32 h-5 bg-black rounded-b-xl z-40\" />
 
         {/* Tela do celular */}
         <div className="w-full h-full flex flex-col pt-14">
@@ -84,11 +84,9 @@ const PhoneMockup = () => {
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight ${
-                  msg.sender === 'client'
+                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight ${msg.sender === 'client'
                     ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
-                    : 'mr-auto bg-white text-black rounded-bl-sm'
-                } animate-fade-in`}
+                    : 'mr-auto bg-white text-black rounded-bl-sm'} animate-fade-in`}
               >
                 {msg.audio ? (
                   <div className="flex items-center space-x-2">
@@ -132,6 +130,6 @@ const PhoneMockup = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PhoneMockup;
