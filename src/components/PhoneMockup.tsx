@@ -54,7 +54,7 @@ const PhoneMockup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4 bg-gradient-to-br from-slate-800 to-slate-900">
-      <div className="relative w-full max-w-[378px] aspect-[9/19] bg-black border-[12px] border-black rounded-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden outline outline-[1.5px] outline-gray-800 before:content-[''] before:absolute before:inset-y-0 before:w-1.5 before:bg-gradient-to-l before:from-black/10 before:to-transparent before:left-0 after:content-[''] after:absolute after:inset-y-0 after:w-1.5 after:bg-gradient-to-r after:from-black/10 after:to-transparent after:right-0">
+      <div className="relative w-full max-w-[340px] aspect-[9/19] bg-black border-[12px] border-black rounded-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden outline outline-[1.5px] outline-gray-800 before:content-[''] before:absolute before:inset-y-0 before:w-1.5 before:bg-gradient-to-l before:from-black/10 before:to-transparent before:left-0 after:content-[''] after:absolute after:inset-y-0 after:w-1.5 after:bg-gradient-to-r after:from-black/10 after:to-transparent after:right-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-gray-900 rounded-b-xl z-30"></div>
 
         <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-xs font-semibold">
@@ -90,7 +90,7 @@ const PhoneMockup = () => {
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-all duration-500 ease-out transform animate-fade-in-up ${
+                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-all duration-700 ease-in-out opacity-0 animate-fade-in ${
                   msg.sender === 'client'
                     ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
                     : 'mr-auto bg-white text-black rounded-bl-sm'
@@ -98,7 +98,20 @@ const PhoneMockup = () => {
               >
                 {msg.audio ? (
                   <div className="flex items-center space-x-3 min-w-[160px] max-w-[70%]">
-                    <img src="/audio-icon-whatsapp.png" alt="play" className="w-6 h-6" />
+                    <button onClick={handlePlay} className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                      {isPlaying ? (
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+                        </svg>
+                      ) : (
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      )}
+                    </button>
+                    <div className="w-6 h-6 rounded-full overflow-hidden">
+                      <img src="/avatar-marcela.jpg" alt="Marcela" className="w-full h-full object-cover" />
+                    </div>
                     <div className="flex-1 h-1 bg-gray-300 rounded">
                       <div className="w-1/3 h-full bg-green-600 rounded" />
                     </div>
