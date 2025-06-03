@@ -1,6 +1,12 @@
 const SocialProofSection = () => {
   const testimonials = [
     {
+      name: "Rodrigo Mariano",
+      role: "Consultoria de Marketing • São Paulo",
+      text: "Meu comercial simplemente triplicou. O SDR da Talker Flow qualifica e filtra todos os leads em tempo real, e meu time comercial só entra em campo pra fechar os mais qualificados. Antes falavam com 20 leads frios pra fechar 2. Agora a IA fala com 100, qualifica 30 e fechamos 10",
+      image: "/testimonial_icon/rodrigo.png"
+    },    
+    {
       name: "Dra. Marcela Coutinho",
       role: "Implantodontia • Manaus",
       text: "Impressionante como simplesmente não há fila. O paciente manda mensagem 14:00, às 14:01 ele é atendido e em 5 minutos a consulta está marcada.",
@@ -11,12 +17,6 @@ const SocialProofSection = () => {
       role: "Contador • Belo Horizonte", 
       text: "Já tive cliente que às 3 da manhã agendou uma reunião pra assinar o contrato no dia seguinte. Quando acordei vi confirmação do agendamento. Se não fosse pela TalkerFlow, com certeza teria mandado mensagens pra mais 20 escritórios.",
       image: "/testimonial_icon/paulo.png"
-    },
-    {
-      name: "Rodrigo Mariano",
-      role: "Dentista • São Paulo",
-      text: "Minha recepcionista estava sobrecarregada, passava umas 4 horas por dia no telefone. Agora quase zero. O agente de IA até consegue encaixar pacientes de última hora quando há cancelamentos.",
-      image: "/testimonial_icon/rodrigo.png"
     }
   ];
 
