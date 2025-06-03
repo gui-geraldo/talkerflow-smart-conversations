@@ -54,11 +54,9 @@ const PhoneMockup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4 bg-gradient-to-br from-slate-800 to-slate-900">
-      <div className="relative w-full max-w-[360px] aspect-[9/19] bg-black rounded-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden">
-        {/* Notch */}
+      <div className="relative w-full max-w-[378px] aspect-[9/19] bg-black border-[12px] border-black rounded-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden outline outline-[1.5px] outline-gray-800 before:content-[''] before:absolute before:inset-y-0 before:w-1.5 before:bg-gradient-to-l before:from-black/10 before:to-transparent before:left-0 after:content-[''] after:absolute after:inset-y-0 after:w-1.5 after:bg-gradient-to-r after:from-black/10 after:to-transparent after:right-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-gray-900 rounded-b-xl z-30"></div>
 
-        {/* Barra de status */}
         <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-xs font-semibold">
           <span>9:41</span>
           <div className="flex items-center gap-1">
@@ -79,7 +77,6 @@ const PhoneMockup = () => {
           </div>
         </div>
 
-        {/* Tela do app */}
         <div className="w-full h-full flex flex-col pt-6">
           <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
             <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
@@ -89,42 +86,19 @@ const PhoneMockup = () => {
             </div>
           </div>
 
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-all duration-500 ease-out transform opacity-100 translate-y-0 ${
+                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-all duration-500 ease-out transform animate-fade-in-up ${
                   msg.sender === 'client'
                     ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
                     : 'mr-auto bg-white text-black rounded-bl-sm'
                 }`}
               >
                 {msg.audio ? (
-                  <div className="flex items-center space-x-2">
-                    <button
-                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
-                      onClick={handlePlay}
-                    >
-                      {isPlaying ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="w-4 h-4 text-green-600"
-                        >
-                          <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="w-4 h-4 text-green-600"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      )}
-                    </button>
+                  <div className="flex items-center space-x-3 min-w-[160px] max-w-[70%]">
+                    <img src="/audio-icon-whatsapp.png" alt="play" className="w-6 h-6" />
                     <div className="flex-1 h-1 bg-gray-300 rounded">
                       <div className="w-1/3 h-full bg-green-600 rounded" />
                     </div>
