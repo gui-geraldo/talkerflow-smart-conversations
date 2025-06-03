@@ -90,7 +90,7 @@ const PhoneMockup = () => {
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-all duration-700 ease-in-out opacity-0 animate-fade-in ${
+                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-opacity duration-700 ease-in-out opacity-100 animate-fade-in ${
                   msg.sender === 'client'
                     ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
                     : 'mr-auto bg-white text-black rounded-bl-sm'
