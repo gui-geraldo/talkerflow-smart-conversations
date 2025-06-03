@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { CheckCheck } from 'lucide-react';
 
 const PhoneMockup = () => {
   const [messageIndex, setMessageIndex] = useState(0);
@@ -54,17 +55,20 @@ const PhoneMockup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen p-4 bg-gradient-to-br from-slate-800 to-slate-900">
-      <div className="relative w-full max-w-[340px] aspect-[9/19] bg-black border-[12px] border-black rounded-3xl shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden outline outline-[1.5px] outline-gray-800 before:content-[''] before:absolute before:inset-y-0 before:w-1.5 before:bg-gradient-to-l before:from-black/10 before:to-transparent before:left-0 after:content-[''] after:absolute after:inset-y-0 after:w-1.5 after:bg-gradient-to-r after:from-black/10 after:to-transparent after:right-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-4 bg-gray-900 rounded-b-xl z-30"></div>
+      <div className="relative w-[300px] h-[640px] bg-black border-[14px] rounded-[2.5rem] shadow-xl overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 mt-[-2px] bg-black rounded-b-3xl z-30"></div>
+        <div className="absolute left-[-14px] top-[80px] h-[32px] w-[3px] bg-gray-700 rounded-l-lg"></div>
+        <div className="absolute right-[-14px] top-[150px] h-[32px] w-[3px] bg-gray-700 rounded-r-lg"></div>
 
-        <div className="absolute top-0 w-full h-6 px-3 flex items-center justify-between z-20 text-white text-xs font-semibold">
+        <div className="absolute top-1 left-3 right-3 flex items-center justify-between text-white text-[10px] z-30 px-2">
+          <div className="flex gap-1">
+            <div className="w-3 h-[2px] bg-white"></div>
+            <div className="w-3 h-[4px] bg-white"></div>
+            <div className="w-3 h-[6px] bg-white"></div>
+          </div>
           <span>9:41</span>
           <div className="flex items-center gap-1">
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2 20h2v-4H2v4zm4 0h2v-7H6v7zm4 0h2v-10h-2v10zm4 0h2v-13h-2v13zm4 0h2V4h-2v16z" />
-            </svg>
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M1 1l22 22" stroke="none" />
               <path d="M5 13a10 10 0 0 1 14 0" />
               <path d="M8.5 16.5a5 5 0 0 1 7 0" />
               <path d="M12 20h.01" />
@@ -78,66 +82,58 @@ const PhoneMockup = () => {
         </div>
 
         <div className="w-full h-full flex flex-col pt-6">
-          <div className="bg-green-600 text-white px-4 py-2 flex items-center space-x-3 overflow-hidden">
-            <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover shrink-0" />
-            <div className="min-w-0">
-              <div className="font-semibold truncate">Marcela Paciente</div>
-              <div className="text-sm text-green-100">Online</div>
+          <div className="bg-[#075E54] text-white px-4 py-3 flex items-center space-x-3">
+            <img src="/avatar-marcela.jpg" alt="Avatar" className="w-9 h-9 rounded-full object-cover" />
+            <div>
+              <p className="font-medium">Marcela Paciente</p>
+              <p className="text-xs text-white/80">Online</p>
             </div>
           </div>
 
-          <div ref={scrollRef} className="flex-1 px-3 py-3 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex flex-col space-y-3 text-sm bg-[#ece5dd]">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto space-y-4 p-4 bg-[#ece5dd] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {conversation.slice(0, messageIndex + 1).map((msg, i) => (
               <div
                 key={i}
-                className={`max-w-[75%] px-3 py-2 rounded-xl shadow text-sm whitespace-pre-line leading-tight transition-opacity duration-700 ease-in-out opacity-100 animate-fade-in ${
+                className={`p-3 rounded-lg shadow-sm text-sm max-w-[80%] whitespace-pre-line leading-tight transition-opacity duration-700 ease-in-out opacity-100 animate-fade-in ${
                   msg.sender === 'client'
-                    ? 'ml-auto bg-[#dcf8c6] text-black rounded-br-sm'
-                    : 'mr-auto bg-white text-black rounded-bl-sm'
+                    ? 'ml-auto bg-[#d9fdd3] rounded-tl-none'
+                    : 'mr-auto bg-white rounded-tr-none'
                 }`}
               >
                 {msg.audio ? (
-                  <div className="flex items-center space-x-3 min-w-[160px] max-w-[70%]">
-                    <button onClick={handlePlay} className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                      {isPlaying ? (
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
-                        </svg>
-                      ) : (
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      )}
-                    </button>
-                    <div className="w-6 h-6 rounded-full overflow-hidden">
-                      <img src="/avatar-marcela.jpg" alt="Marcela" className="w-full h-full object-cover" />
+                  <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-2 cursor-pointer" onClick={handlePlay}>
+                    {isPlaying ? (
+                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    )}
+                    <div className="w-32 h-1 bg-gray-300 rounded-full relative">
+                      <div className="absolute top-0 left-0 h-1 bg-gray-500 rounded-full w-1/3"></div>
                     </div>
-                    <div className="flex-1 h-1 bg-gray-300 rounded">
-                      <div className="w-1/3 h-full bg-green-600 rounded" />
-                    </div>
-                    <div className="text-xs text-gray-600">0:08</div>
+                    <span className="text-xs text-gray-500">0:08</span>
                     <audio ref={audioRef} src="/audio/audio-marcela.mp3" preload="auto" onEnded={() => setIsPlaying(false)} />
                   </div>
                 ) : (
                   <div dangerouslySetInnerHTML={{ __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                 )}
-                <div className="text-[10px] text-gray-500 mt-1 text-right">
-                  {msg.time}
+                <div className="text-[10px] text-gray-500 mt-1 text-right flex items-center gap-1">
+                  <span>{msg.time}</span>
+                  {msg.sender === 'agent' && <CheckCheck size={12} className="text-[#34b7f1]" />}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-white px-4 py-2 flex items-center space-x-2 border-t">
-            <div className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-gray-500 text-sm">
-              Digite uma mensagem
-            </div>
-            <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
+          <div className="bg-[#f0f2f5] p-2 border-t border-gray-200">
+            <div className="w-full h-10 bg-white rounded-full px-4 flex items-center text-sm text-gray-400">
+              Digite uma mensagem...
             </div>
           </div>
+          <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-28 h-1 bg-gray-700 rounded-full"></div>
         </div>
       </div>
     </div>
