@@ -6,17 +6,18 @@ const SocialProofSection = () => {
       text: "Meu comercial simplemente triplicou. O SDR da Talker Flow qualifica e filtra todos os leads em tempo real, e meu time comercial só entra em campo pra fechar os mais qualificados. Antes falavam com 20 leads frios pra fechar 2. Agora a IA fala com 100, qualifica 30 e fechamos 10",
       image: "/testimonial_icon/rodrigo.png"
     },    
-    {
-      name: "Dra. Marcela Coutinho",
-      role: "Implantodontia • Manaus",
-      text: "Impressionante como simplesmente não há fila. O paciente manda mensagem 14:00, às 14:01 ele é atendido e em 5 minutos a consulta está marcada.",
-      image: "/testimonial_icon/marcela.png"
-    },
+    ,
     {
       name: "Paulo Mendes",
       role: "Contador • Belo Horizonte", 
       text: "Já tive cliente que às 3 da manhã agendou uma reunião pra assinar o contrato no dia seguinte. Quando acordei vi confirmação do agendamento. Se não fosse pela TalkerFlow, com certeza teria mandado mensagens pra mais 20 escritórios.",
       image: "/testimonial_icon/paulo.png"
+    },
+    {
+      name: "Dra. Marcela Coutinho",
+      role: "Implantodontia • Manaus",
+      text: "Impressionante como simplesmente não há fila. O paciente manda mensagem 14:00, às 14:01 ele é atendido e em 5 minutos a consulta está marcada.",
+      image: "/testimonial_icon/marcela.png"
     }
   ];
 
@@ -25,7 +26,6 @@ const SocialProofSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center text-white mb-12">
           <h2 className="text-4xl font-bold mb-4">O que nossos clientes dizem</h2>
-          <p className="text-xl text-gray-300">Histórias reais de transformação</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
